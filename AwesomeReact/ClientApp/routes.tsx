@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
-import { Register } from './components/Register';
+import { Layout,Home,FetchData,Counter,Register,Login } from './components';
 
 export const routes = <Layout>
-    <Route path='/Register' component={Register} />
     <Route exact path='/' component={ Home } />
     <Route path='/counter' component={ Counter } />
-    <Route path='/fetchdata' component={ FetchData } />
+    <Route path='/fetchdata' component={FetchData} />
+    <Route path='/register' component={Register} />
+    <Route path='/login' component={Login} />
 </Layout>;

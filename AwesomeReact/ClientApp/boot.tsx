@@ -1,10 +1,13 @@
 import './css/site.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter } from 'react-router-dom';
 import * as RoutesModule from './routes';
+
+
 let routes = RoutesModule.routes;
 
 function renderApp() {

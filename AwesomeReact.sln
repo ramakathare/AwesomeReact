@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeReact", "AwesomeReact\AwesomeReact.csproj", "{A044036E-320E-4BA5-9AAD-B9A192E6D3BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwesomeReact", "AwesomeReact\AwesomeReact.csproj", "{A044036E-320E-4BA5-9AAD-B9A192E6D3BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeReact.API", "AwesomeReact.API\AwesomeReact.API.csproj", "{7AA6D851-100D-435A-9CF4-931D8BB435C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeReact.Entities", "AwesomeReact.Entities\AwesomeReact.Entities.csproj", "{28C7E45F-C5BA-4E6B-BBA7-FE3DDCDE0F0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeReact.Repository", "AwesomeReact.Repository\AwesomeReact.Repository.csproj", "{C2282376-E8F0-404F-97A6-C784BAB8489F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeReact.Service", "AwesomeReact.Service\AwesomeReact.Service.csproj", "{113EF85B-446D-49DB-9CBE-2303D365C971}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{A044036E-320E-4BA5-9AAD-B9A192E6D3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A044036E-320E-4BA5-9AAD-B9A192E6D3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A044036E-320E-4BA5-9AAD-B9A192E6D3BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AA6D851-100D-435A-9CF4-931D8BB435C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AA6D851-100D-435A-9CF4-931D8BB435C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AA6D851-100D-435A-9CF4-931D8BB435C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AA6D851-100D-435A-9CF4-931D8BB435C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28C7E45F-C5BA-4E6B-BBA7-FE3DDCDE0F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C7E45F-C5BA-4E6B-BBA7-FE3DDCDE0F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C7E45F-C5BA-4E6B-BBA7-FE3DDCDE0F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C7E45F-C5BA-4E6B-BBA7-FE3DDCDE0F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2282376-E8F0-404F-97A6-C784BAB8489F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2282376-E8F0-404F-97A6-C784BAB8489F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2282376-E8F0-404F-97A6-C784BAB8489F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2282376-E8F0-404F-97A6-C784BAB8489F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{113EF85B-446D-49DB-9CBE-2303D365C971}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{113EF85B-446D-49DB-9CBE-2303D365C971}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{113EF85B-446D-49DB-9CBE-2303D365C971}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{113EF85B-446D-49DB-9CBE-2303D365C971}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

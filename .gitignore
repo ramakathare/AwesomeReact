@@ -1,0 +1,10 @@
+/packages
+/.vs
+/AwesomeReact.API/bin
+/AwesomeReact.API/obj
+/AwesomeReact.Entities/bin/Debug
+/AwesomeReact.Entities/obj/Debug
+/AwesomeReact.Repository/bin/Debug
+/AwesomeReact.Repository/obj/Debug
+/AwesomeReact.Service/bin/Debug
+/AwesomeReact.Service/obj/Debug

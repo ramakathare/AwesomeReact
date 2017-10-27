@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import 'isomorphic-fetch';
-import { WeatherForecast } from '../interfaces/weatherForecast';
+import { IWeatherForecast } from '../interfaces';
 import { Http } from '../services/http';
 
 interface FetchDataExampleState {
-    forecasts: WeatherForecast[];
+    forecasts: IWeatherForecast[];
     loading: boolean;
 }
 
@@ -36,7 +36,7 @@ export class FetchData extends React.Component<RouteComponentProps<{}>, FetchDat
         </div>;
     }
 
-    private static renderForecastsTable(forecasts: WeatherForecast[]) {
+    private static renderForecastsTable(forecasts: IWeatherForecast[]) {
         return <table className='table'>
             <thead>
                 <tr>
