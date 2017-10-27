@@ -29,7 +29,7 @@ export class RegisterModel implements IRegisterFormModel {
                 value: 100,
                 message:"Email can not exceed 100 characters",
             },
-            regex: {
+            regExp: {
                 value: "[a-zA-Z](?!.*\s).{0,246}@[a-z]{2,10}[.][a-z]{2,5}$",
                 message:"Email is invalid"
             }
@@ -40,12 +40,32 @@ export class RegisterModel implements IRegisterFormModel {
         name: "password",
         placeholder: "Password",
         value: "",
+        rules: {
+            required: {
+                value: true,
+                message: "Password is required"
+            },
+            equalTo: {
+                value: "confirmPassword",
+                message: "Password and confirm password should match" 
+            }
+        }
     };
     public confirmPassword: IFormInput = {
         type: "text",
         name: "confirmPassword",
         placeholder: "Confirm Password",
         value: "",
+        rules: {
+            required: {
+                value: true,
+                message: "Password is required"
+            },
+            equalTo: {
+                value: "password",
+                message: "Password and confirm password should match"
+            }
+        }
     };
     
 }

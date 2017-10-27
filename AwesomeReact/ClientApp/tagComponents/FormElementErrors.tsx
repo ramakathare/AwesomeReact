@@ -17,10 +17,11 @@ export class FormElementErrors extends React.Component<IFormElementErrorProps, {
         if (rules) {
             for (var key in rules) {
                 var rule = rules[key];
-                if(rule) if (rule.failed) errors.push(<div className='error'>{rule.message}</div>)
+                var className = "error error_" + key;
+                if (rule) if (rule.failed) errors.push(<div key={key} className={className}>{rule.message}</div>)
             }
         }
 
-        return <div>{errors.join()}</div>;
+        return <div>{errors}</div>;
     }
 }
