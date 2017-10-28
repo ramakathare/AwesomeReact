@@ -8,12 +8,13 @@ export interface IFormModelProperties {
     [Key: string]: IFormInput
 }
 
-
+type AutoCompleteOptions = "off" | "on" | undefined;
 export interface IFormInput {
     type: string,
     placeholder?: string,
     dirty?:boolean,
     value?: any,
+    autoComplete?: string,
     defaultValue?: any,
     rules?: {
         [key: string]:  IFormInputRule_Required |

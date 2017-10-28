@@ -53,8 +53,13 @@ export class RulesValidator {
                 var value = formInput.value;
                 var otherFormInput = prop[rule.value] as IFormInput;
                 if (!otherFormInput.dirty) return true;
+
+                
+                if (otherFormInput.rules) 
+                    if (otherFormInput.rules.equalTo) 
+                        otherFormInput.rules.equalTo.failed = false;
+
                 if (otherFormInput.value == value) {
-                    if (otherFormInput.rules) if (otherFormInput.rules.equalTo) otherFormInput.rules.equalTo.failed = false;
                     return true;
                 }
             }

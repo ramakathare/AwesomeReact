@@ -10,12 +10,13 @@
 import { RulesValidator } from './RulesValidator';
 
 export abstract class FormInputValidator {
-
+    //To validate the form input.
+    //Form model, Name of the property
     public static TriggerChangeOnFormInput(form: IFormModel, name: string) {
         this.validateProperty(form.prop, name);
         this.setFormValidity(form);
     }
-
+    //To validate the form model property
     static validateProperty(prop: IFormModelProperties, name: string) {
         var formInput = prop[name];
 
@@ -46,6 +47,7 @@ export abstract class FormInputValidator {
         }
     }
 
+    //Set form level validity
     static setFormValidity(form: IFormModel) {
         form.isValid = true;
         for(var key in form.prop){
@@ -57,17 +59,14 @@ export abstract class FormInputValidator {
         }
     }
     
+    //Check form level validity. Used on submit
     public static CheckFormValidity(form: IFormModel) {
-        this.triggerChangeonForm(form);
-        return form.isValid;
-    }
-
-    public static triggerChangeonForm(form: IFormModel) {
+        //Iterate through each property and check validity
         for (let name in form.prop) {
             if(!form.prop[name].dirty)
             this.validateProperty(form.prop, name);
         }
         this.setFormValidity(form);
-    } 
+    }
 }
 

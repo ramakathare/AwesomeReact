@@ -7,7 +7,7 @@ import * as Promise from 'bluebird';
 export abstract class Http {
 
     static axiosInstance: AxiosInstance;
-    static apiEndPoint: string= "api/";
+    static apiEndPoint: string = "http://localhost:42055/";
 
     public static Initialize() {
 
