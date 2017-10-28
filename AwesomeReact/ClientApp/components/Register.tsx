@@ -1,9 +1,9 @@
 ﻿import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { Link, NavLink } from 'react-router-dom';
-import { IRegisterFormModel, IFormInput } from '../interfaces'
+import { IFormInput } from '../interfaces'
 import * as ReactDOM from "react-dom";
-import { RegisterModel } from '../models';
+import { IRegisterFormModel,RegisterModel } from '../models';
 import { FormElementErrors } from '../tagComponents/FormElementErrors';
 import { FormInputValidator } from "../services/FormInputValidator";
 
@@ -26,17 +26,19 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
         const value = e.target.value;
         this.setState(state => {
             let registerForm = state.registerForm;
-            let formInput = (registerForm[name] as IFormInput);
+            let formInput = registerForm.prop[name];
 
             //assign value
             formInput.value = value;
             //Validate input
-            FormInputValidator.validate(registerForm,name);
+            FormInputValidator.TriggerChangeOnFormInput(registerForm,name);
             return {
              registerForm: registerForm
             }
         }); 
     }
+
+    
 
     componentDidMount() {
         var $this = ReactDOM.findDOMNode(this);
@@ -46,14 +48,22 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
     componentWillUnmount() {
         console.log("unmounted");
     }
+    CheckFormValidity(){
+        var valid = FormInputValidator.CheckFormValidity(this.state.registerForm);
+        this.setState(state => {
+            return {
+             registerForm: state.registerForm
+            }
+        }); 
+        return valid;
+    }
     onSubmit(e: any) {
         e.preventDefault();
-        //if (!this.state.registerForm.isValid) alert("form is invalid");
-        //else alert("form is valid");
+        var validity = this.CheckFormValidity();
+        if(validity) alert("valid");
     }
 
     public render() {
-
         return (
             <div className="container">
                 <div className="row">
@@ -66,23 +76,22 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
                                 <form name="form" onSubmit={this.onSubmit.bind(this)} noValidate>
                                     <fieldset>
                                         <div className="form-group">
-                                            <input onChange={this.handleUserInput} className="form-control input-lg" placeholder="E-mail Address" name="email" value={this.state.registerForm.email.value} type="text" />
-                                            <FormElementErrors formInput={this.state.registerForm.email}></FormElementErrors>
+                                            <input onChange={this.handleUserInput} className="form-control input-lg" placeholder="E-mail Address" name="email" value={this.state.registerForm.prop.email.value} type={this.state.registerForm.prop.email.type} />
+                                            <FormElementErrors formInput={this.state.registerForm.prop.email}></FormElementErrors>
                                         </div>
                                         <div className="form-group">
-                                            <input onChange={this.handleUserInput} className="form-control input-lg" placeholder="Password" name="password" value={this.state.registerForm.password.value} type="password" />
-                                            <FormElementErrors formInput={this.state.registerForm.password}></FormElementErrors>
+                                            <input onChange={this.handleUserInput} className="form-control input-lg" placeholder="Password" name="password" value={this.state.registerForm.prop.password.value} type={this.state.registerForm.prop.password.type} />
+                                            <FormElementErrors formInput={this.state.registerForm.prop.password}></FormElementErrors>
                                         </div>
                                         <div className="form-group">
-                                            <input onChange={this.handleUserInput} className="form-control input-lg" placeholder="Confirm Password" value={this.state.registerForm.confirmPassword.value} name="confirmPassword" type="password" />
-                                            <FormElementErrors formInput={this.state.registerForm.confirmPassword}></FormElementErrors>
+                                            <input onChange={this.handleUserInput} className="form-control input-lg" placeholder="Confirm Password" name="confirmPassword" value={this.state.registerForm.prop.confirmPassword.value} type={this.state.registerForm.prop.confirmPassword.type} />
+                                            <FormElementErrors formInput={this.state.registerForm.prop.confirmPassword}></FormElementErrors>
                                         </div >
                                         <div className="pull-right" > Already registered? <NavLink to={'/login'} exact activeClassName='active'> Login</NavLink>
                                         </div >
                                         <input className="btn btn-lg btn-primary btn-block" defaultValue="Register" type="submit" />
                                     </fieldset >
                                 </form >
-                                {this.state.registerForm.isInvalid}
                             </div >
                         </div >
                     </div >

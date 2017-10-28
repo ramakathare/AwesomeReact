@@ -1,71 +1,83 @@
-﻿import { IRegisterFormModel, IFormInput } from '../interfaces';
+﻿import { IFormInput, IFormModel, IFormModelProperties } from '../interfaces';
+
+
+export interface IRegisterFormModel extends IFormModel {
+    getModel: () => {
+        email: string,
+        password: string,
+        confirmPassword: string
+    },
+    prop:IRegisterFormModelProperties
+}
+
+export interface IRegisterFormModelProperties extends IFormModelProperties{
+    email: IFormInput;
+    password: IFormInput;
+    confirmPassword: IFormInput;
+}
 
 export class RegisterModel implements IRegisterFormModel {
-
-    
     constructor() {}
-
     
     public getModel = () => {
         return {
-            email: this.email.value,
-            password: this.password.value,
-            confirmPassword: this.confirmPassword.value
+            email: this.prop.email.value,
+            password: this.prop.password.value,
+            confirmPassword: this.prop.confirmPassword.value
         }
     };
     
-    public email: IFormInput = {
-        type: "email",
-        name: "email",
-        placeholder: "E-Mail",
-        value: "",
-        defaultValue: "",
-        rules: {
-            required: {
-                value: true,
-                message: "Email is required"
-            },
-            maxLength: {
-                value: 100,
-                message:"Email can not exceed 100 characters",
-            },
-            regExp: {
-                value: "[a-zA-Z](?!.*\s).{0,246}@[a-z]{2,10}[.][a-z]{2,5}$",
-                message:"Email is invalid"
+    public prop = {
+        email:{
+            type: "email",
+            placeholder: "E-Mail",
+            value: "",
+            defaultValue: "",
+            rules: {
+                required: {
+                    value: true,
+                    message: "Email is required"
+                },
+                maxLength: {
+                    value: 100,
+                    message:"Email can not exceed 100 characters",
+                },
+                regExp: {
+                    value: "[a-zA-Z](?!.*\s).{0,246}@[a-z]{2,10}[.][a-z]{2,5}$",
+                    message:"Email is invalid"
+                }
             }
-        }
-    }
-    public password: IFormInput = {
-        type: "text",
-        name: "password",
-        placeholder: "Password",
-        value: "",
-        rules: {
-            required: {
-                value: true,
-                message: "Password is required"
-            },
-            equalTo: {
-                value: "confirmPassword",
-                message: "Password and confirm password should match" 
+        },
+        password:{
+            type: "text",
+            placeholder: "Password",
+            value: "",
+            rules: {
+                required: {
+                    value: true,
+                    message: "Password is required"
+                },
+                equalTo: {
+                    value: "confirmPassword",
+                    message: "Password and confirm password should match" 
+                }
             }
-        }
-    };
-    public confirmPassword: IFormInput = {
+        },
+        confirmPassword: {
         type: "text",
-        name: "confirmPassword",
         placeholder: "Confirm Password",
         value: "",
         rules: {
-            required: {
-                value: true,
-                message: "Password is required"
-            },
-            equalTo: {
-                value: "password",
-                message: "Password and confirm password should match"
+                required: {
+                    value: true,
+                    message: "Confirm Password is required"
+                },
+                equalTo: {
+                    value: "password",
+                    message: "Password and confirm password should match"
+                }
             }
         }
-    };
+    }
     
 }

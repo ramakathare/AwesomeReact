@@ -13,10 +13,10 @@
     <None Remove="ClientApp\components\Register.tsx" />
     <None Remove="ClientApp\interfaces\IFormModel.ts" />
     <None Remove="ClientApp\interfaces\index.ts" />
-    <None Remove="ClientApp\interfaces\IRegisterFormModel.ts" />
     <None Remove="ClientApp\models\index.ts" />
     <None Remove="ClientApp\models\RegisterModel.ts" />
     <None Remove="ClientApp\services\FormInputValidator.ts" />
+    <None Remove="ClientApp\services\RulesValidator.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,10 +33,10 @@
     <TypeScriptCompile Include="ClientApp\components\Register.tsx" />
     <TypeScriptCompile Include="ClientApp\interfaces\IFormModel.ts" />
     <TypeScriptCompile Include="ClientApp\interfaces\index.ts" />
-    <TypeScriptCompile Include="ClientApp\interfaces\IRegisterFormModel.ts" />
     <TypeScriptCompile Include="ClientApp\models\index.ts" />
     <TypeScriptCompile Include="ClientApp\models\RegisterModel.ts" />
     <TypeScriptCompile Include="ClientApp\services\FormInputValidator.ts" />
+    <TypeScriptCompile Include="ClientApp\services\RulesValidator.ts" />
     <TypeScriptCompile Include="ClientApp\tagComponents\FormElementErrors.tsx" />
   </ItemGroup>
 

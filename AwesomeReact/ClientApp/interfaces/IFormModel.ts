@@ -1,14 +1,18 @@
 ﻿export interface IFormModel {
     getModel: () => any,
     isValid?: boolean,
-    validity?:any,
-    [Key: string]: boolean | any
-
+    prop: IFormModelProperties
 }
+
+export interface IFormModelProperties {
+    [Key: string]: IFormInput
+}
+
+
 export interface IFormInput {
     type: string,
-    name?:string,
     placeholder?: string,
+    dirty?:boolean,
     value?: any,
     defaultValue?: any,
     rules?: {
