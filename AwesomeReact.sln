@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeReact.Repository", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeReact.Service", "AwesomeReact.Service\AwesomeReact.Service.csproj", "{113EF85B-446D-49DB-9CBE-2303D365C971}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeReact.Redux", "AwesomeReact.Redux\AwesomeReact.Redux.csproj", "{2AC37A2E-0B59-4781-A92A-2FB71AB96975}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{113EF85B-446D-49DB-9CBE-2303D365C971}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{113EF85B-446D-49DB-9CBE-2303D365C971}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{113EF85B-446D-49DB-9CBE-2303D365C971}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AC37A2E-0B59-4781-A92A-2FB71AB96975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AC37A2E-0B59-4781-A92A-2FB71AB96975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AC37A2E-0B59-4781-A92A-2FB71AB96975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AC37A2E-0B59-4781-A92A-2FB71AB96975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

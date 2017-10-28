@@ -15,7 +15,7 @@ export class Login extends React.Component<RouteComponentProps<{}>, {}> {
     public render() {
 
         return (
-            <div className="container">
+            <div className="">
                 <div className="row">
                     <div className="col-md-4 col-md-offset-4 card">
                         <div>
