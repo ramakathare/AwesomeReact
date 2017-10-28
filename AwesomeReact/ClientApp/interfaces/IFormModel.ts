@@ -12,9 +12,9 @@ type AutoCompleteOptions = "off" | "on" | undefined;
 export interface IFormInput {
     type: string,
     placeholder?: string,
-    dirty?:boolean,
+    dirty?: boolean,
     value?: any,
-    autoComplete?: string,
+    autoComplete?: "off" | "on",
     defaultValue?: any,
     rules?: {
         [key: string]:  IFormInputRule_Required |

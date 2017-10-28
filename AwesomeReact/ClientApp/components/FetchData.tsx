@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import 'isomorphic-fetch';
 import { IWeatherForecast } from '../interfaces';
-import { Http } from '../services/http';
+import { ArHttp } from '../services';
 
 interface FetchDataExampleState {
     forecasts: IWeatherForecast[];
@@ -11,13 +11,11 @@ interface FetchDataExampleState {
 
 export class FetchData extends React.Component<RouteComponentProps<{}>, FetchDataExampleState> {
 
-    http: Http;
-
-    constructor() {
+      constructor() {
         super();
         this.state = { forecasts: [], loading: true };
 
-        Http.get('SampleData/WeatherForecasts')
+        ArHttp.get('SampleData/WeatherForecasts')
             .then(response => {
                 if (response.data)
                     this.setState({ forecasts: (response.data as any), loading: false });

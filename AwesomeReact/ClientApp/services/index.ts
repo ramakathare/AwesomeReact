@@ -1,3 +1,4 @@
 ﻿export * from './FormInputValidator';
-export * from './Http';
-export * from './RulesValidator'
+export * from './ArHttp';
+export * from './RulesValidator';
+export * from './Feedback';

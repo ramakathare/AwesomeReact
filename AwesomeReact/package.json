@@ -28,15 +28,19 @@
     "react-hot-loader": "3.0.0-beta.7",
     "react-router-dom": "4.1.1",
     "style-loader": "0.18.2",
-    "typescript": "2.4.1",
+    "typescript": "2.5.3",
     "url-loader": "0.5.9",
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2",
     "bluebird": "^3.5.1"
   },
   "dependencies": {
+    "@types/object-assign": "^4.0.30",
+    "@types/prop-types": "^15.5.2",
     "bootstrap": "^4.0.0-beta",
+    "object-assign": "4.1.1",
     "popper.js": "^1.11.0",
+    "prop-types": "^15.5.8",
     "react": "https://registry.npmjs.org/react/-/react-15.6.1.tgz",
     "react-dom": "https://registry.npmjs.org/react-dom/-/react-dom-15.6.1.tgz",
     "reactstrap": "^5.0.0-alpha.3"

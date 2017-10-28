@@ -9,7 +9,8 @@
     "skipDefaultLibCheck": true,
     "strict": true,
     "types": [ "webpack-env" ],
-    "lib": [ "es5", "es6", "dom" ]
+    "lib": [ "es5", "es6", "dom" ],
+    "noImplicitAny": false
   },
   "exclude": [
       "bin",

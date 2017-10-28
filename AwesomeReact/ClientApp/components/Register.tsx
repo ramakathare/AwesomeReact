@@ -5,7 +5,9 @@ import { Link, NavLink } from 'react-router-dom';
 import * as ReactDOM from "react-dom";
 import { IRegisterFormModel,IRegisterFormModelProperties,RegisterModel } from '../models';
 import { FormElementErrors } from '../tagComponents/FormElementErrors';
-import { FormInputValidator,Http } from "../services";
+import { FormInputValidator, ArHttp, Feedback } from "../services";
+
+
 
 interface IRegisterForm {
     registerForm: IRegisterFormModel
@@ -62,17 +64,20 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
     onSubmit(e: any) {
         e.preventDefault();
         this.CheckFormValidity();
-        if(this.state.registerForm.isValid) {
+        if (this.state.registerForm.isValid) {
+            Feedback.success("Form is valid");
             var model = this.state.registerForm.getModel();
-            Http.post("api/account/register", model).then((response) => {
-                console.log(response);
-            });
+            //Http.post("api/account/register", model).then((response) => {
+            //    console.log(response);
+            //});
+        } else {
+            Feedback.error("Form is in valid");
         }
     }
 
     public render() {
         return (
-            <div className="container">
+            <div className="">
                 <div className="row">
                     <div className="col-md-4 col-md-offset-4 card">
                         <div>
@@ -83,7 +88,7 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
                                 <form name="form" onSubmit={this.onSubmit.bind(this)} noValidate>
                                     <fieldset>
                                         <div className="form-group">
-                                            <input className="form-control input-lg"
+                                            <input className={"form-control input-lg " + (this.regFormProp.email.isInvalid ? "error-input" : "")}
                                                 name="email" 
                                                 onChange={this.handleUserInput} 
                                                 autoComplete={this.regFormProp.email.autoComplete}
@@ -93,7 +98,7 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
                                             <FormElementErrors formInput={this.regFormProp.email}></FormElementErrors>
                                         </div>
                                         <div className="form-group">
-                                            <input className="form-control input-lg"
+                                            <input className={"form-control input-lg " + (this.regFormProp.password.isInvalid ? "error-input" : "")}
                                                 name="password" 
                                                 onChange={this.handleUserInput}  
                                                 autoComplete={this.regFormProp.email.autoComplete}
@@ -103,7 +108,7 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
                                             <FormElementErrors formInput={this.regFormProp.password}></FormElementErrors>
                                         </div>
                                         <div className="form-group">
-                                            <input className="form-control input-lg"
+                                            <input className={"form-control input-lg " + (this.regFormProp.confirmPassword.isInvalid ? "error-input" : "")}
                                                 name="confirmPassword"
                                                 onChange={this.handleUserInput} 
                                                 autoComplete={this.regFormProp.email.autoComplete}
@@ -114,7 +119,7 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
                                         </div>
                                         <div className="pull-right" > Already registered? <NavLink to={'/login'} exact activeClassName='active'> Login</NavLink>
                                         </div>
-                                        <input disabled={!this.state.registerForm.isValid} className="btn btn-lg btn-primary btn-block" defaultValue="Register" type="submit" />
+                                        <input className="btn btn-lg btn-primary btn-block" defaultValue="Register" type="submit" />
                                     </fieldset >
                                 </form > 
                             </div >

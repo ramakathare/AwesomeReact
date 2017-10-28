@@ -13,7 +13,7 @@ export class FormElementErrors extends React.Component<IFormElementErrorProps, {
         if (!formInput.isInvalid) return <span></span>;
 
         var rules = this.props.formInput.rules;
-        var errors = [];
+        var errors = [] as any[];
         if (rules) {
             for (var key in rules) {
                 var rule = rules[key];

@@ -58,12 +58,28 @@ export abstract class FormInputValidator {
             }
         }
     }
+
+    //to reset formInput level validity
+    public static setFormInputValidity(formInput: IFormInput) {
+        formInput.isInvalid = false;
+        var rules = formInput.rules;
+        if (rules) {
+            for (var rulekey in rules) {
+                var rule = rules[rulekey];
+                if (rule) {
+                    if (rule.failed) {
+                        formInput.isInvalid = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
     
     //Check form level validity. Used on submit
     public static CheckFormValidity(form: IFormModel) {
         //Iterate through each property and check validity
         for (let name in form.prop) {
-            if(!form.prop[name].dirty)
             this.validateProperty(form.prop, name);
         }
         this.setFormValidity(form);

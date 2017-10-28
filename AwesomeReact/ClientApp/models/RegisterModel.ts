@@ -34,7 +34,7 @@ export class RegisterModel implements IRegisterFormModel {
             placeholder: "E-Mail",
             value: "",
             defaultValue: "",
-            autoComplete: "off",
+            autoComplete: "off" as "off",
             rules: {
                 required: {
                     value: true,
@@ -54,7 +54,7 @@ export class RegisterModel implements IRegisterFormModel {
             type: "text",
             placeholder: "Password",
             value: "",
-            autoComplete: "off",
+            autoComplete: "off" as "off",
             rules: {
                 required: {
                     value: true,
@@ -70,7 +70,7 @@ export class RegisterModel implements IRegisterFormModel {
             type: "text",
             placeholder: "Confirm Password",
             value: "",
-            autoComplete: "off",
+            autoComplete: "off" as "on",
             rules: {
                 required: {
                     value: true,
