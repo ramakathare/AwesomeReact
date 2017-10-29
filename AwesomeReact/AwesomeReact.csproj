@@ -10,12 +10,15 @@
   <ItemGroup>
     <None Remove="ClientApp\components\index.ts" />
     <None Remove="ClientApp\components\Login.tsx" />
+    <None Remove="ClientApp\components\NotFound.tsx" />
     <None Remove="ClientApp\components\Register.tsx" />
+    <None Remove="ClientApp\config\config.ts" />
     <None Remove="ClientApp\interfaces\IFormModel.ts" />
     <None Remove="ClientApp\interfaces\index.ts" />
     <None Remove="ClientApp\models\index.ts" />
     <None Remove="ClientApp\models\RegisterModel.ts" />
     <None Remove="ClientApp\modules\arNoti\components\notify.tsx" />
+    <None Remove="ClientApp\services\AuthService.ts" />
     <None Remove="ClientApp\services\Feedback.ts" />
     <None Remove="ClientApp\services\FormInputValidator.ts" />
     <None Remove="ClientApp\services\index.ts" />
@@ -33,12 +36,15 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\index.ts" />
     <TypeScriptCompile Include="ClientApp\components\Login.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\NotFound.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Register.tsx" />
+    <TypeScriptCompile Include="ClientApp\config\config.ts" />
     <TypeScriptCompile Include="ClientApp\interfaces\IFormModel.ts" />
     <TypeScriptCompile Include="ClientApp\interfaces\index.ts" />
     <TypeScriptCompile Include="ClientApp\models\index.ts" />
     <TypeScriptCompile Include="ClientApp\models\RegisterModel.ts" />
     <TypeScriptCompile Include="ClientApp\modules\arNoti\notify.tsx" />
+    <TypeScriptCompile Include="ClientApp\services\AuthService.ts" />
     <TypeScriptCompile Include="ClientApp\services\Feedback.ts" />
     <TypeScriptCompile Include="ClientApp\services\FormInputValidator.ts" />
     <TypeScriptCompile Include="ClientApp\services\index.ts" />

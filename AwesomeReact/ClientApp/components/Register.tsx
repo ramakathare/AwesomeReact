@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter  } from 'react-router-dom';
 
 import * as ReactDOM from "react-dom";
 import { IRegisterFormModel,IRegisterFormModelProperties,RegisterModel } from '../models';
@@ -67,9 +67,10 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
         if (this.state.registerForm.isValid) {
             Feedback.success("Form is valid");
             var model = this.state.registerForm.getModel();
-            //Http.post("api/account/register", model).then((response) => {
-            //    console.log(response);
-            //});
+            ArHttp.post("api/account/register", model).then((response) => {
+                Feedback.success("Registered successfully");
+                this.props.history.push("/login");
+            });
         } else {
             Feedback.error("Form is in valid");
         }

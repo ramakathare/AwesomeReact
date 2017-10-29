@@ -10,7 +10,10 @@
     "strict": true,
     "types": [ "webpack-env" ],
     "lib": [ "es5", "es6", "dom" ],
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "exclude": [
       "bin",

@@ -4,3 +4,4 @@ export { FetchData } from './FetchData';
 export { Counter } from './Counter';
 export { Register } from './Register';
 export { Login } from './Login';
+export { NotFound } from './NotFound';
