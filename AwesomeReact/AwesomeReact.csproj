@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="ClientApp\components\index.ts" />
     <None Remove="ClientApp\components\Login.tsx" />
+    <None Remove="ClientApp\components\Logout.tsx" />
     <None Remove="ClientApp\components\NotFound.tsx" />
     <None Remove="ClientApp\components\Register.tsx" />
     <None Remove="ClientApp\config\config.ts" />
@@ -36,6 +37,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\index.ts" />
     <TypeScriptCompile Include="ClientApp\components\Login.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\Logout.tsx" />
     <TypeScriptCompile Include="ClientApp\components\NotFound.tsx" />
     <TypeScriptCompile Include="ClientApp\components\Register.tsx" />
     <TypeScriptCompile Include="ClientApp\config\config.ts" />

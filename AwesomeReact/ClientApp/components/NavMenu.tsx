@@ -13,22 +13,28 @@ export class NavMenu extends React.Component<{}, {}> {
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
                     </button>
-                    <Link className='navbar-brand' to={ '/' }>AwesomeReact</Link>
+                    <Link className='navbar-brand' to={'/'}>AwesomeReact</Link>
+                    
                 </div>
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
+                        <li className={AuthIno.isAuth ? '' : 'displayNone'}>
+                            <NavLink to={'/logout'} activeClassName='active'>
+                                <span className='glyphicon glyphicon-th-list'></span> Logout
+                            </NavLink>
+                        </li>
                         <li>
                             <NavLink to={ '/' } exact activeClassName='active'>
                                 <span className='glyphicon glyphicon-home'></span> Home
                             </NavLink>
                         </li>
-                        <li>
+                        <li className={AuthIno.isAuth ? 'displayNone' : ''}>
                             <NavLink to={'/register'} activeClassName='active'>
                                 <span className='glyphicon glyphicon-th-list'></span> Register
                             </NavLink>
                         </li>
-                        <li>
+                        <li className={AuthIno.isAuth ? 'displayNone' : ''}>
                             <NavLink to={'/login'} activeClassName='active'>
                                 <span className='glyphicon glyphicon-th-list'></span> Login
                             </NavLink>

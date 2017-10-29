@@ -12,7 +12,7 @@ export interface IAuthentication {
 
 export abstract class AuthService {
 
-    static _cookieService;
+    private static _cookieService;
 
     public static Initialize() {
         this._cookieService = new Cookies();
@@ -25,7 +25,7 @@ export abstract class AuthService {
         token: "",
         token_type: ""
     };
-    private static lastRestrictedPage = "";
+    
 
     //to regiser a new user
     public static saveRegistration(registration) {
@@ -34,7 +34,7 @@ export abstract class AuthService {
 
     //login code. 
     public static login(loginData, callback: () => void) {
-        let data = "grant_type=password&username=" + loginData.Email + "&password=" + loginData.Password;
+        let data = "grant_type=password&username=" + loginData.email + "&password=" + loginData.password;
 
         let options: AxiosRequestConfig = {
             headers: {
@@ -43,18 +43,19 @@ export abstract class AuthService {
         };
 
         //The apiend point is the token end point
-        ArHttp.post(`${Config.apiEndPoint}/token`, data, options).then((response:any) => {
+        ArHttp.post(`${Config.apiEndPoint}/token`, data, options).then((response: any) => {
+            var data = response.data;
             //once the token obtained set the local variables
             this.authentication.isAuth = true;
-            this.authentication.userName = response.userName;
-            this.authentication.token = response.access_token;
-            this.authentication.token_type = response.token_type;
+            this.authentication.userName = data.userName;
+            this.authentication.token = data.access_token;
+            this.authentication.token_type = data.token_type;
 
             //if the login form has remember me enabled we need to store the token in cookie with expiry data as current date + expiry of the token in seconds
-            if (loginData.RememberMe) {
+            if (loginData.rememberMe) {
                 var date = new Date();
                 date.setSeconds(date.getSeconds + response.expires_in);
-                this._cookieService.save('authorizationData', this.authentication,{ expires: date })
+                this._cookieService.set('authorizationData', this.authentication,{ expires: date })
             }
             callback();
         });
@@ -67,7 +68,7 @@ export abstract class AuthService {
     }
 
     //logout service
-    public static logOut(isSilent, callback: () => void) {
+    public static LogOut(isSilent, callback: () => void) {
         ArHttp.post(`${Config.apiEndPoint}/api/Account/Logout`, null).then((response) => {
             //once logged out from server clear the local data, remove from cookies and fire callback if any
             this.resetAuthentication();

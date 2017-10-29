@@ -1,11 +1,12 @@
 ﻿import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { Link, NavLink, withRouter  } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 
 import * as ReactDOM from "react-dom";
-import { IRegisterFormModel,IRegisterFormModelProperties,RegisterModel } from '../models';
+import { IRegisterFormModel, IRegisterFormModelProperties, RegisterModel } from '../models';
 import { FormElementErrors } from '../tagComponents/FormElementErrors';
-import { FormInputValidator, ArHttp, Feedback } from "../services";
+import { FormInputValidator, ArHttp, Feedback, AuthService } from "../services";
+import { RouteRenderer } from '../routes';
 
 
 
@@ -14,8 +15,8 @@ interface IRegisterForm {
 }
 
 export class Register extends React.Component<RouteComponentProps<{}>, IRegisterForm> {
-    regFormProp:IRegisterFormModelProperties;
-    constructor(props:any) {
+    regFormProp: IRegisterFormModelProperties;
+    constructor(props: any) {
         super(props);
         this.state = {
             registerForm: new RegisterModel()
@@ -34,11 +35,11 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
             //assign value
             formInput.value = value;
             //Validate input
-            FormInputValidator.TriggerChangeOnFormInput(registerForm,name);
+            FormInputValidator.TriggerChangeOnFormInput(registerForm, name);
             return {
-             registerForm: registerForm
+                registerForm: registerForm
             }
-        }); 
+        });
     }
 
     componentDidMount() {
@@ -51,7 +52,7 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
         console.log("unmounted");
     }
 
-    CheckFormValidity(){
+    CheckFormValidity() {
         FormInputValidator.CheckFormValidity(this.state.registerForm);
 
         //After checking validty set state is called so that validation errors if any are set on the view
@@ -59,17 +60,16 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
             return {
                 registerForm: this.state.registerForm
             }
-        }); 
+        });
     }
     onSubmit(e: any) {
         e.preventDefault();
         this.CheckFormValidity();
         if (this.state.registerForm.isValid) {
-            Feedback.success("Form is valid");
             var model = this.state.registerForm.getModel();
-            ArHttp.post("api/account/register", model).then((response) => {
+            AuthService.saveRegistration(model).then((response) => {
                 Feedback.success("Registered successfully");
-                this.props.history.push("/login");
+                RouteRenderer.RedirectAfterRegister(this.props.history);
             });
         } else {
             Feedback.error("Form is in valid");
@@ -90,31 +90,31 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
                                     <fieldset>
                                         <div className="form-group">
                                             <input className={"form-control input-lg " + (this.regFormProp.email.isInvalid ? "error-input" : "")}
-                                                name="email" 
-                                                onChange={this.handleUserInput} 
+                                                name="email"
+                                                onChange={this.handleUserInput}
                                                 autoComplete={this.regFormProp.email.autoComplete}
-                                                placeholder={this.regFormProp.email.placeholder} 
-                                                value={this.regFormProp.email.value} 
+                                                placeholder={this.regFormProp.email.placeholder}
+                                                value={this.regFormProp.email.value}
                                                 type={this.regFormProp.email.type} />
                                             <FormElementErrors formInput={this.regFormProp.email}></FormElementErrors>
                                         </div>
                                         <div className="form-group">
                                             <input className={"form-control input-lg " + (this.regFormProp.password.isInvalid ? "error-input" : "")}
-                                                name="password" 
-                                                onChange={this.handleUserInput}  
+                                                name="password"
+                                                onChange={this.handleUserInput}
                                                 autoComplete={this.regFormProp.email.autoComplete}
                                                 placeholder={this.regFormProp.password.placeholder}
-                                                value={this.regFormProp.password.value} 
+                                                value={this.regFormProp.password.value}
                                                 type={this.regFormProp.password.type} />
                                             <FormElementErrors formInput={this.regFormProp.password}></FormElementErrors>
                                         </div>
                                         <div className="form-group">
                                             <input className={"form-control input-lg " + (this.regFormProp.confirmPassword.isInvalid ? "error-input" : "")}
                                                 name="confirmPassword"
-                                                onChange={this.handleUserInput} 
+                                                onChange={this.handleUserInput}
                                                 autoComplete={this.regFormProp.email.autoComplete}
-                                                placeholder={this.regFormProp.confirmPassword.placeholder} 
-                                                value={this.regFormProp.confirmPassword.value} 
+                                                placeholder={this.regFormProp.confirmPassword.placeholder}
+                                                value={this.regFormProp.confirmPassword.value}
                                                 type={this.regFormProp.confirmPassword.type} />
                                             <FormElementErrors formInput={this.regFormProp.confirmPassword}></FormElementErrors>
                                         </div>
@@ -122,7 +122,7 @@ export class Register extends React.Component<RouteComponentProps<{}>, IRegister
                                         </div>
                                         <input className="btn btn-lg btn-primary btn-block" defaultValue="Register" type="submit" />
                                     </fieldset >
-                                </form > 
+                                </form >
                             </div >
                         </div >
                     </div >

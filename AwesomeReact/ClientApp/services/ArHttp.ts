@@ -5,10 +5,12 @@ import axios, { AxiosRequestConfig, AxiosPromise, AxiosInstance } from 'axios';
 import * as Promise from 'bluebird';
 import { Feedback } from './Feedback';
 import { Config } from '../config/config';
+import { AuthService } from '../services';
+import { RouteRenderer } from '../routes';
 
 export abstract class ArHttp {
 
-    static axiosInstance: AxiosInstance;
+    private static axiosInstance: AxiosInstance;
     
 
     public static Initialize() {
@@ -26,21 +28,32 @@ export abstract class ArHttp {
             return response;
         }, function (error) {
             //could be more elaborate. We need parse the error object
-            Feedback.error("Response error occured: " + Error);
+            Feedback.error("Response error occured: " + error);
             return Promise.reject(error);
         });
 
     }
 
-    
+    private static fire(action: any,config?: AxiosRequestConfig, ) {
+        if (RouteRenderer.AuthIno.isAuth && RouteRenderer.AuthIno.token) {
+            config = config || {};
+            config.headers = config.headers || {};
+            config.headers['Authorization'] = "bearer " + RouteRenderer.AuthIno.token;
+        }
+        return action(config);
+    }
     //Get action
     public static get(actionUrl: string, config?: AxiosRequestConfig): AxiosPromise<Response> {
-        return this.axiosInstance.get(Config.apiEndPoint + actionUrl, config);
+        return this.fire((config) => {
+            return this.axiosInstance.get(actionUrl, config)
+        }, config)
     }
 
     //post action
     public static post(actionUrl: string, data: any, config?: AxiosRequestConfig): AxiosPromise<Response> {
-        return this.axiosInstance.post(Config.apiEndPoint + actionUrl, data,config);
+        return this.fire((config) => {
+            return this.axiosInstance.post(actionUrl, data, config);
+        },config);
     }
     //todo add other http actions
 }
